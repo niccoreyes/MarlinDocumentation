@@ -2,7 +2,7 @@ name: 'Marlin Firmware'
 logo: '/assets/images/logo/marlin/small.png'
 description: 'Printing the planet, one layer at a time.'
 
-baseurl: "https://niccoreyes.github.io/MarlinDocumentation"
+baseurl: "/MarlinDocumentation"
 # url: 'https://marlinfw.org'
 url: 'https://niccoreyes.github.io'
 js: '/assets/javascript/'
