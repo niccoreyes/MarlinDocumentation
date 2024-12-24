@@ -35,15 +35,15 @@
        * As Github pages do not support https for custom domains
        * this is the current best workaround for #18.
        */
-      var domains  = [ 'marlinfw.org', 'localhost', '127.0.0.1' ];
+      var domains  = [ 'marlinfw.org', 'localhost', '127.0.0.1', 'niccoreyes.github.io' ];
       var pathname = location.pathname.replace(/^\/MarlinDocumentation/, '')
       if (domains.indexOf(window.location.hostname) == -1)
-        window.top.location.href = 'https://marlinfw.org' + pathname;
+        window.top.location.href = 'https://niccoreyes.github.io/MarlinDocumentation' + pathname;
 
       /**
        * Another ugly workaround trying to improve UX reported by #35
        */
-      if (location.protocol != 'https:' && window.location.hostname == 'marlinfw.org')
+      if (location.protocol != 'https:' && window.location.hostname == 'niccoreyes.github.io')
         location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
 
       /**
