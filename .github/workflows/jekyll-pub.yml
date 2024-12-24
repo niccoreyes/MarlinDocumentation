@@ -26,7 +26,7 @@ concurrency:
 jobs:
   # Build job
   build:
-    if: github.repository == 'MarlinFirmware/MarlinDocumentation'
+    if: github.repository == 'niccoreyes/MarlinDocumentation'
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
@@ -51,7 +51,7 @@ jobs:
 
   # Deployment job
   deploy:
-    if: github.repository == 'MarlinFirmware/MarlinDocumentation'
+    if: github.repository == 'niccoreyes/MarlinDocumentation'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

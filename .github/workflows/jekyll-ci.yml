@@ -12,7 +12,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-22.04
-    if: github.repository == 'MarlinFirmware/MarlinDocumentation'
+    if: github.repository == 'niccoreyes/MarlinDocumentation'
     steps:
     - name: PR Checkout
       uses: actions/checkout@v2
