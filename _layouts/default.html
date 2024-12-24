@@ -50,16 +50,16 @@
        * Improves overall speed by loading javascript and css resources in parallel
        * with the main page.
        */
-      head.load(
-          "{{ 'jquery-2.2.1.min.js' | prepend: site.js }}",
-          "{{ 'jquery-ui.min.js' | prepend: site.js }}",
-          "{{ 'bootstrap.min.js' | prepend: site.js }}",
-          "{{ 'tocify.min.js' | prepend: site.js }}",
-          "{{ 'search.js' | prepend: site.js }}",
-          "{{ 'custom.js' | prepend: site.js }}",
+       head.load(
+          "{{ '/jquery-2.2.1.min.js' | prepend: site.js | prepend: site.baseurl }}",
+          "{{ '/jquery-ui.min.js' | prepend: site.js | prepend: site.baseurl }}",
+          "{{ '/bootstrap.min.js' | prepend: site.js | prepend: site.baseurl }}",
+          "{{ '/tocify.min.js' | prepend: site.js | prepend: site.baseurl }}",
+          "{{ '/search.js' | prepend: site.js | prepend: site.baseurl }}",
+          "{{ '/custom.js' | prepend: site.js | prepend: site.baseurl }}",
 
-          "{{ 'sheetrock.min.js' | prepend: site.js }}",
-          "{{ 'cookieconsent.min.js' | prepend: site.js }}"
+          "{{ '/sheetrock.min.js' | prepend: site.js | prepend: site.baseurl }}",
+          "{{ '/cookieconsent.min.js' | prepend: site.js | prepend: site.baseurl }}"
       );
 
       head.ready(function() {
