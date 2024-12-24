@@ -3,7 +3,8 @@ logo: '/assets/images/logo/marlin/small.png'
 description: 'Printing the planet, one layer at a time.'
 
 baseurl: ''
-url: 'https://marlinfw.org'
+# url: 'https://marlinfw.org'
+url: 'https://niccoreyes.github.io/MarlinDocumentation'
 js: '/assets/javascript/'
 pull_img: '/assets/images/docs/development/pull_images/'
 
