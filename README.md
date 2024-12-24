@@ -1,3 +1,26 @@
+
+# New Calibration Tools
+
+In the recent update, we have introduced two new calibration tools: **Input Shaping Calibration** and **Linear Advance Calibration**. These tools enhance the user interface and functionality, providing a more robust and user-friendly experience.
+
+### Input Shaping Calibration
+
+This tool allows users to calibrate input shaping settings for their 3D printers. It includes a user interface for uploading G-code files, generates G-code to create calibration patterns for input shaping, and provides diagrams and examples to understand resonant frequencies and damping factors.
+
+### Linear Advance Calibration
+
+The Linear Advance Calibration tool provides a user interface for calibrating the Linear Advance setting in 3D printing. It includes a file upload feature for G-code, allowing users to import their configurations directly. The tool also extracts relevant configuration settings from the G-code and populates the form fields automatically.
+
+### Usage Instructions
+
+1. Navigate to the respective calibration tool page.
+2. Upload your G-code file using the provided interface.
+3. Follow the on-screen instructions to interpret the calibration results.
+4. Refer to the visual aids for guidance on achieving optimal settings.
+
+Please note that these tools are currently optimized for Cartesian printers; CoreXY kinematics are not yet supported.
+
+---
 <p align="center"><img src="https://raw.githubusercontent.com/MarlinFirmware/Marlin/bugfix-2.1.x/buildroot/share/pixmaps/logo/marlin-outrun-nf-500.png" height="250" alt="Marlin Firmware logo" /></p>
 
 <h1 align="center">Marlin Documentation Project</h1>
