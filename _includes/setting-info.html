@@ -127,7 +127,7 @@
     {% assign ttl = img.title | markdownify | strip_html %}
     <h4>{{ ttl }}</h4>
     {{ cap }}
-    <img src="{{ img.path | prepend: '/assets/images/config/' }}" alt="{{ ttl | xml_escape }}" title="{{ ttl | xml_escape }}" />
+    <img src="{{ img.path | prepend: site.baseurl+'/assets/images/config/' }}" alt="{{ ttl | xml_escape }}" title="{{ ttl | xml_escape }}" />
   {% endfor %}
 </div>
 {% endif %}

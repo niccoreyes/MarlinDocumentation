@@ -1,12 +1,12 @@
 name: 'Marlin Firmware'
-logo: '/assets/images/logo/marlin/small.png'
+logo: '/MarlinDocumentation/assets/images/logo/marlin/small.png'
 description: 'Printing the planet, one layer at a time.'
 
 baseurl: "/MarlinDocumentation"
 # url: 'https://marlinfw.org'
 url: 'https://niccoreyes.github.io'
-js: '/assets/javascript/'
-pull_img: '/assets/images/docs/development/pull_images/'
+js: '/MarlinDocumentation/assets/javascript/'
+pull_img: '/MarlinDocumentation/assets/images/docs/development/pull_images/'
 
 # Not used anymore
 enforce_ssl: marlinfw.org
