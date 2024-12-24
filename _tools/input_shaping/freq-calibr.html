@@ -152,14 +152,18 @@ author:       KimmoHop
  </head>
  <body>
 <div class="container" role="main">
-  <div class="col-sm-12">
-    <h3>Upload G-code</h3>
-    <input type="file" id="gcodeFile" accept=".gcode" />
-  </div>
-
   <div class="row">
     <div id="calibpat">
       <h1>Input Shaping Calibration Pattern</h1>
+      <div class="col-sm-12" id="drop_zone" style="border: 2px dashed #bbb; padding: 20px; text-align: center;">
+        <h3>Upload G-code From Prusa Slicer</h3>
+        <input type="file" id="gcodeFile" accept=".gcode" />
+        <p>Or drag and drop files here</p>
+        <p id="fileInfo">No file loaded.</p>
+      </div>
+      
+      <script src="../fileHandler.js"></script>
+
       <p><i>Based on the excellent work of <a href="//github.com/tombrazier">@tombrazier</a></i></p>
 {% alert warning %}
 Caution! Only for Cartesian printers. CoreXY kinematics are not yet tested.

@@ -160,10 +160,14 @@ category: [tools]
           <!-- {% alert warning %} __Caution!__ - K-values for Linear Advance 1.0 and
           1.5 are not compatible. - Linear Advance 1.0 only applies to Marlin
           version 1.1.8 and earlier. {% endalert %} -->
-          <div class="col-sm-12">
-            <h3>Upload G-code</h3>
+          <div class="col-sm-12" id="drop_zone" style="border: 2px dashed #bbb; padding: 20px; text-align: center;">
+            <h3>Upload G-code From Prusa Slicer</h3>
             <input type="file" id="gcodeFile" accept=".gcode" />
+            <p>Or drag and drop files here</p>
+            <p id="fileInfo">No file loaded.</p>
           </div>
+          
+          <script src="../fileHandler.js"></script>
           <table id="tool">
             <tbody>
               <tr class="head">
