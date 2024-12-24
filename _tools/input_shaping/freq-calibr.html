@@ -1,14 +1,162 @@
----
+<!-- ---
 title:        'Input Shaping Calibration Pattern'
 description:  'Create G-code to calibrate IS setting'
 category:     [ tools ]
 author:       KimmoHop
----
-<script language="JavaScript" type="text/javascript" src="{{ site.js }}jquery-2.2.1.min.js"></script>
-<script language="JavaScript" type="text/javascript" src="{{ site.js }}jquery-ui.min.js"></script>
-<script language="JavaScript" type="text/javascript" src="{{ site.js }}FileSaver.min.js"></script>
-<script language="JavaScript" type="text/javascript" src="./freq-calibr.js"></script>
+--- -->
+<!DOCTYPE html>
+<html lang="en"> <head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Frequency Calibration</title>
+   <link
+     rel="stylesheet"
+     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+   />
+   <script
+     language="JavaScript"
+     type="text/javascript"
+     src="./jquery-2.2.1.min.js"
+   ></script>
+   <script
+     language="JavaScript"
+     type="text/javascript"
+     src="./jquery-ui.min.js"
+   ></script>
+   <script
+     language="JavaScript"
+     type="text/javascript"
+     src="./FileSaver.min.js"
+   ></script>
+   <script language="JavaScript" type="text/javascript" src="./freq-calibr.js"></script>
+   <style>
+     body {
+       font-family: "Arial", sans-serif;
+       background-color: #f4f4f9;
+       color: #333;
+       margin: 0;
+       padding: 0;
+     }
+     .container {
+       max-width: 1200px;
+       margin: 0 auto;
+       padding: 20px;
+     }
+     h1,
+     h3,
+     h4 {
+       color: #444;
+     }
+     .alert {
+       background-color: #ffcc00;
+       color: #333;
+       padding: 10px;
+       border-radius: 5px;
+       margin-bottom: 20px;
+     }
+     .row {
+       display: flex;
+       flex-wrap: wrap;
+       margin: -10px;
+     }
+     .col-sm-12,
+     .col-sm-6 {
+       padding: 10px;
+       box-sizing: border-box;
+     }
+     .col-sm-12 {
+       flex: 100%;
+     }
+     .col-sm-6 {
+       flex: 50%;
+     }
+     table {
+       width: 100%;
+       border-collapse: collapse;
+       margin-bottom: 20px;
+     }
+     th,
+     td {
+       padding: 10px;
+       border: 1px solid #ddd;
+       text-align: left;
+     }
+     th {
+       background-color: #f8f8f8;
+     }
+     input[type="text"],
+     input[type="number"],
+     select,
+     textarea {
+       width: 100%;
+       padding: 8px;
+       margin: 5px 0;
+       box-sizing: border-box;
+       border: 1px solid #ccc;
+       border-radius: 4px;
+     }
+     input[type="button"] {
+       background-color: #007bff;
+       color: white;
+       padding: 10px 20px;
+       border: none;
+       border-radius: 4px;
+       cursor: pointer;
+       margin-top: 10px;
+     }
+     input[type="button"]:hover {
+       background-color: #0056b3;
+     }
+     .section {
+       background-color: #e9ecef;
+       font-weight: bold;
+     }
+     .options {
+       text-align: right;
+     }
+     .notes,
+     .screenshots {
+       margin-top: 20px;
+     }
+     .notes ul,
+     .screenshots ul {
+       list-style-type: none;
+       padding: 0;
+     }
+     .notes li,
+     .screenshots li {
+       margin-bottom: 10px;
+     }
+     .td-output {
+       width: 50%;
+       vertical-align: top;
+       position: relative;
+     }
+     .settings-column {
+       width: 50%;
+     }
+     .td-hidden{
+        display: none;
+     }
+     textarea {
+       width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        box-sizing: border-box;
+     }
+   </style>
+ </head>
+ <body>
 <div class="container" role="main">
+  <div class="col-sm-12">
+    <h3>Upload G-code</h3>
+    <input type="file" id="gcodeFile" accept=".gcode" />
+  </div>
+
   <div class="row">
     <div id="calibpat">
       <h1>Input Shaping Calibration Pattern</h1>
@@ -33,7 +181,7 @@ Caution! Only for Cartesian printers. CoreXY kinematics are not yet tested.
           </tr>
           <tr>
             <td colspan="3" class="section"><h4>Printer Info</h4></td>
-            <td rowspan="26">
+            <td class="td-output" rowspan="26">
               <textarea name="freq-gcode-out" id="freq-gcode-out" style="height:100%"></textarea>
             </td>
             <td class="td-hidden">
@@ -208,7 +356,7 @@ Caution! Only for Cartesian printers. CoreXY kinematics are not yet tested.
             <li>Measuring the distance (mm) from the beginning of the pattern to the point of amplitude peak reveals Resonant Frequency, where frequency is this distance divided by 2.</li>
             <li>To reduce ringing, Input Shaping tries to dampen Resonant Frequency, aka. Damping Frequency.</li>
           </ul>
-          <img src="/assets/images/features/freq-calibr/frequency-drawing.png" alt="DampingFrequencyDrawing" />
+          <img src="https://marlinfw.org/assets/images/features/freq-calibr/frequency-drawing.png" alt="DampingFrequencyDrawing" />
         </div>
         <div class="col-sm-6">
           <h3>Zeta/Damping Factor theory</h3>
@@ -223,17 +371,17 @@ Caution! Only for Cartesian printers. CoreXY kinematics are not yet tested.
             </li>
             <li>To find the best value look for the zigzag pattern with <em>the most uniform amplitude</em> at and below the Damping Frequency and <em>the same or decreased amplitude</em> above the Damping Frequency.</li>
           </ul>
-          <img src="/assets/images/features/freq-calibr/damping-drawing.png" alt="DampingFactorDrawing" />
+          <img src="https://marlinfw.org/assets/images/features/freq-calibr/damping-drawing.png" alt="DampingFactorDrawing" />
         </div>
       </div>
       <div class="row">
         <div class="col-sm-6">
           <h3>Damping Frequency Pattern - Example 1</h3>
-          <img src="/assets/images/features/freq-calibr/freq-pattern-1.jpg" alt="DampingFrequencyPattern" />
+          <img src="https://marlinfw.org/assets/images/features/freq-calibr/freq-pattern-1.jpg" alt="DampingFrequencyPattern" />
         </div>
         <div class="col-sm-6">
           <h3>Zeta/Damping Factor Pattern - Example 1</h3>
-          <img src="/assets/images/features/freq-calibr/zeta-pattern-y-1.jpg" alt="ZetaDampingFactorPattern" />
+          <img src="https://marlinfw.org/assets/images/features/freq-calibr/zeta-pattern-y-1.jpg" alt="ZetaDampingFactorPattern" />
         </div>
       </div>
       <div class="row">
@@ -248,7 +396,7 @@ Caution! Only for Cartesian printers. CoreXY kinematics are not yet tested.
             <li>Slowdown</li>
           </ul>
           <p>The Resonant Frequency for Y is around 39Hz (78mm). The Resonant Frequency for X is not so clear, 55-60Hz (110-120mm).</p>
-          <img src="/assets/images/features/freq-calibr/freq-pattern2.png" alt="DampingFrequencyPattern" />
+          <img src="https://marlinfw.org/assets/images/features/freq-calibr/freq-pattern2.png" alt="DampingFrequencyPattern" />
         </div>
         <div class="col-sm-6">
           <h3>Zeta/Damping Factor Pattern - Example 2</h3>
@@ -260,7 +408,7 @@ Caution! Only for Cartesian printers. CoreXY kinematics are not yet tested.
           <p>Damping Factor values start from 0.05 and increase by 0.05.</p>
           <p>0.40 (8th pattern) looks the best.</p>
           <p>Note! Zeta/Damping pattern for X is vertical. (The leftmost line is part of the anchor and is not relevant to Damping Factor values.)</p>
-          <img src="/assets/images/features/freq-calibr/zeta-pattern2.png" alt="ZetaDampingFactorPattern" />
+          <img src="https://marlinfw.org/assets/images/features/freq-calibr/zeta-pattern2.png" alt="ZetaDampingFactorPattern" />
         </div>
       </div>
       <div class="row">
@@ -268,8 +416,99 @@ Caution! Only for Cartesian printers. CoreXY kinematics are not yet tested.
           <h3>Example of loose roller wheels</h3>
           <p>During this pattern the bed may have been moving and/or rotating in directions other than just Y.</p>
           <p>The roller wheels of the bed were too loose and tightening them improved the pattern.</p>
-          <img src="/assets/images/features/freq-calibr/loose-wheels.png" alt="LooseWheelsExample" />
+          <img src="https://marlinfw.org/assets/images/features/freq-calibr/loose-wheels.png" alt="LooseWheelsExample" />
         </div>
       </div>
   </div>
 </div>
+<script>
+  document
+    .getElementById("gcodeFile")
+    .addEventListener("change", function (event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const gcode = e.target.result;
+          parseGcode(gcode);
+        };
+        reader.readAsText(file);
+      }
+    });
+   function parseGcode(gcode) {
+    const lines = gcode.split("\n");
+    const configStart = lines.indexOf("; prusaslicer_config = begin");
+    const configEnd = lines.indexOf("; prusaslicer_config = end");
+     if (configStart !== -1 && configEnd !== -1) {
+      const configLines = lines.slice(configStart + 1, configEnd);
+      const config = {};
+       configLines.forEach((line) => {
+        const match = line.match(/; (\w+) = (.+)/);
+        if (match) {
+          const key = match[1];
+          let value = match[2];
+          // Remove quotes if value is enclosed in them
+          value = value.replace(/^"(.+(?="$))"$/, '$1');
+          // Always store the value as an array, splitting by comma
+          config[key] = value.split(",");
+        }
+      });
+      function setBedSize(configKey) {
+        if (config[configKey] && config[configKey].length > 0) {
+          const bedShapeValues = config[configKey];
+          if (bedShapeValues.length >= 3) {
+            const bedSizeX = bedShapeValues[1].split('x')[0]; // Get the X value from "180x0"
+            const bedSizeY = bedShapeValues[2].split('x')[1]; // Get the Y value from "180x180"
+            document.getElementById('BEDSIZE_X').value = bedSizeX;
+            document.getElementById('BEDSIZE_Y').value = bedSizeY;
+          } else {
+            console.error('Invalid bed_shape format');
+          }
+        } else {
+          console.error('bed_shape configuration not found or invalid');
+        }
+      }
+       function setElementConfig(elementId, configKey, index) {
+        if (config[configKey]) {
+            const value =
+                index !== undefined
+                    ? config[configKey][index]
+                    : config[configKey];
+            const element = document.getElementById(elementId);
+            if (element) {
+                element.value = value;
+                console.log(value);
+            } else {
+                console.warn(`Element with ID ${elementId} not found.`);
+            }
+        }
+    }
+      setBedSize("bed_shape");
+      setElementConfig("PRINTER", "printer_model");
+      setElementConfig("FILAMENT", "filament_settings_id");
+      setElementConfig("JERK", "machine_max_jerk_x", 0);
+      setElementConfig("Y_JERK", "machine_max_jerk_y", 0);
+      setElementConfig("Z_JERK", "machine_max_jerk_z", 0);
+      setElementConfig("E_JERK", "machine_max_jerk_e", 0);
+      setElementConfig("BED_TEMP", "bed_temperature");
+      setElementConfig("NOZZLE_TEMP", "first_layer_temperature");
+      setElementConfig("NOZZLE_DIAMETER", "nozzle_diameter");
+      setElementConfig("FILAMENT_DIAMETER", "filament_diameter");
+      setElementConfig("EXTRUSION_MULT", "extrusion_multiplier");
+      setElementConfig("FAN_SPEED", "fan_speed");
+      setElementConfig("LAYER_HEIGHT", "first_layer_height");
+      setElementConfig("SPEED_RETRACT", "retract_speed");
+      setElementConfig("RETRACTION", "retract_length");
+      setElementConfig("UNRETRACT_SPEED", "deretract_speed");
+      setElementConfig("ACCELERATION", "default_acceleration");
+      // max_print_speed
+      setElementConfig("PRINT_SPEED", "max_print_speed");
+      setElementConfig("SPEED_TRAVEL", "travel_speed");
+      setElementConfig("DECEL", "machine_max_acceleration_x",0);
+    } else {
+      alert("G-code configuration section not found.");
+    }
+  }
+</script>
+</body>
+</html>
