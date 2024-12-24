@@ -5,7 +5,7 @@ description: 'Printing the planet, one layer at a time.'
 baseurl: "/MarlinDocumentation"
 # url: 'https://marlinfw.org'
 url: 'https://niccoreyes.github.io'
-js: '/MarlinDocumentation/assets/javascript/'
+js: '/assets/javascript/'
 pull_img: '/MarlinDocumentation/assets/images/docs/development/pull_images/'
 
 # Not used anymore

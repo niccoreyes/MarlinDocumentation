@@ -7,7 +7,7 @@
 <nav class="navbar navbar-default navbar-fixed-top custom-no-margin">
   <div class="container">
     <div class="navbar-header">
-      <a href="/" class="navbar-brand">{% include marlin-svg.html %}</a>
+      <a href="{{ '/' | prepend: site.baseurl }}" class="navbar-brand">{% include marlin-svg.html %}</a>
       <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -26,10 +26,10 @@
         <li id="top-tools" class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="navbar-tools">Tools <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="/tools/u8glib/converter.html">Bitmap Converter</a></li>
-            <li><a href="/tools/rgb565/converter.html">RGB565 Converter</a></li>
-            <li><a href="/tools/lin_advance/k-factor.html">Calibrate Linear Advance</a></li>
-            <li><a href="/tools/input_shaping/freq-calibr.html">Calibrate Input Shaping</a></li>
+            <li><a href="{{ '/tools/u8glib/converter.html' | prepend: site.baseurl }}">Bitmap Converter</a></li>
+            <li><a href="{{ '/tools/rgb565/converter.html' | prepend: site.baseurl }}">RGB565 Converter</a></li>
+            <li><a href="{{ '/tools/lin_advance/k-factor.html' | prepend: site.baseurl }}">Calibrate Linear Advance</a></li>
+            <li><a href="{{ '/tools/input_shaping/freq-calibr.html' | prepend: site.baseurl }}">Calibrate Input Shaping</a></li>
             <li class="divider"></li>
             <li><a href="//github.com/MarlinFirmware/Marlin/issues">Bugtracker</a></li>
             <li><a href="/docs/basics/reporting_bugs.html">Reporting bugs</a></li>
@@ -92,7 +92,7 @@
 
         <li id="top-donate"><a href="/docs/development/contributing.html#donate">❤️ Donate</a></li>
 
-        <li id="daynite"><img src="/assets/images/btn-night.svg" alt="Dark Mode" width="32" height="32" /></li>
+        <li id="daynite"><img src="{{ '/assets/images/btn-night.svg' | prepend: site.baseurl }}" alt="Dark Mode" width="32" height="32" /></li>
 
         <li id="searchbox">
           <form action="/meta/search/">
